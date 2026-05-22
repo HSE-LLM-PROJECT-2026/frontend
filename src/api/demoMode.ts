@@ -8,9 +8,7 @@ type RuntimeWindow = Window & {
   };
 };
 
-const DEMO_HOSTNAMES = new Set<string>([
-  'multicluster-demo.hse-llm-project-2026.ru',
-]);
+const DEMO_HOSTNAMES = new Set<string>();
 
 function toBoolean(value: unknown): boolean {
   if (typeof value === 'boolean') return value;
@@ -39,4 +37,3 @@ export function isDemoModeEnabled(): boolean {
   const hostname = String(window.location.hostname || '').trim().toLowerCase();
   return DEMO_HOSTNAMES.has(hostname);
 }
-
