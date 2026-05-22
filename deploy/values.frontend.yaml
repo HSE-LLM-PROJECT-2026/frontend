@@ -1,0 +1,59 @@
+namespace:
+  create: false
+  name: hse-llm-project
+
+nameOverride: "frontend"
+fullnameOverride: "frontend"
+
+replicaCount: 1
+
+image:
+  repository: awesomecosmonaut/frontend
+  tag: latest
+  pullPolicy: Always
+
+env:
+  reactAppApiUrl: "https://deployment.hse-llm-project-2026.ru"
+  reactAppSecurityApiUrl: "https://audit.hse-llm-project-2026.ru"
+  reactAppApiBearerToken: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+  nodePort: null
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+probes:
+  liveness:
+    path: /livez
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+  readiness:
+    path: /health
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 2
+    failureThreshold: 3
+
+ingress:
+  enabled: false
+  className: nginx
+  annotations: {}
+  hosts:
+    - host: platform.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+nginx:
+  configMapName: frontend-nginx

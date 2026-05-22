@@ -1,0 +1,42 @@
+{
+  "defaults": {
+    "cpu": {
+      "idle_watts": 72,
+      "max_watts": 235
+    },
+    "gpu": {
+      "idle_watts": 150,
+      "max_watts": 520
+    }
+  },
+  "nodes": {
+    "worker-1": {
+      "idle_watts": 80,
+      "max_watts": 240
+    },
+    "worker-2": {
+      "idle_watts": 85,
+      "max_watts": 255
+    },
+    "worker-3": {
+      "idle_watts": 78,
+      "max_watts": 230
+    },
+    "gpu-worker-1": {
+      "idle_watts": 170,
+      "max_watts": 560
+    },
+    "gpu-worker-2": {
+      "idle_watts": 180,
+      "max_watts": 580
+    },
+    "srv-small-1": {
+      "idle_watts": 68,
+      "max_watts": 210
+    },
+    "srv-small-2": {
+      "idle_watts": 70,
+      "max_watts": 220
+    }
+  }
+}
